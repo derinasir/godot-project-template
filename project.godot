@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="new_project"
+run/main_scene="uid://cfu565uv2dvcg"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -20,10 +21,21 @@ GameEvents="*uid://dhuw8wqio0h7u"
 ServiceLocator="*uid://cfwvcf1dcvd0o"
 SceneLoader="*uid://ykkrp7flpjyp"
 SFXManager="*uid://ce14txe6a17pg"
+Constants="*uid://3qb35ytdve1"
+
+[editor]
+
+version_control/plugin_name="GitPlugin"
+version_control/autoload_on_startup=true
 
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/GDQuest_GDScript_formatter/plugin.cfg")
+
+[layer_names]
+
+3d_physics/layer_1="WorldGeometry"
+3d_physics/layer_2="HitDetection"
 
 [physics]
 
