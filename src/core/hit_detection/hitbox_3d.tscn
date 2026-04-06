@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cvx7sf4eismea" path="res://src/core/hit_detection/hitbox_3d.gd" id="1_0iod6"]
 
-[node name="Hitbox3D" type="Area3D" unique_id=656250797]
+[node name="Hitbox3D" type="Area3D" unique_id=656250797 groups=["hitbox"]]
 collision_layer = 2
 collision_mask = 0
 monitoring = false

@@ -72,8 +72,8 @@ func _on_area_entered(area: Area3D) -> void:
 	hit_info.knockback_dir = hit_direction
 	hit_info.alignment = alignment
 
-	was_hit.emit(id)
-	area.struck.emit(area.id)
+	was_hit.emit(id, hit_info)
+	area.struck.emit(area.id, hit_info)
 
 	if debug:
 		print("Hurtbox was hit, id: " + str(id))
