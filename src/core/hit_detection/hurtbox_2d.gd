@@ -7,7 +7,7 @@ signal was_hit(id: int, hit_info: HitInfo)
 @export var debug: bool = false
 @export var activate_on_ready: bool = false
 @export var ignore_self: bool = true
-@export var root: Node3D
+@export var root: Node2D
 @export var hit_masks: Array[StringName]
 
 var active: bool = false
@@ -46,7 +46,7 @@ func _on_area_entered(area: Area2D) -> void:
 	if ignore_self and (owner == area.owner):
 		return
 
-	if not area.current_hit_info:
+	if not area.hit_info:
 		print("Hitbox has no injected HitInfo")
 		return
 
@@ -66,11 +66,12 @@ func _on_area_entered(area: Area2D) -> void:
 
 	var hit_info: HitInfo = area.hit_info.clone()
 
-	var hit_direction: Vector2 = root.global_position - area.root.global_position
-	var alignment = Vector2.RIGHT.dot(hit_direction)
+	var knockback_dir: Vector2 = root.global_position - area.root.global_position
+	var alignment = Vector2.RIGHT.dot(knockback_dir)
 
-	hit_info.hit_direction = hit_direction
+	hit_info.knockback_dir = knockback_dir
 	hit_info.alignment = alignment
+	hit_info.victim = root
 
 	was_hit.emit(id, hit_info)
 	area.struck.emit(area.id, hit_info)

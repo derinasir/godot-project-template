@@ -8,7 +8,7 @@ signal struck(id: int, hit_info: HitInfo)
 
 var active: bool = false
 var id: int
-var current_hit_info: HitInfo
+var hit_info: HitInfo
 
 @onready var colshape: CollisionShape3D = $CollisionShape3D
 

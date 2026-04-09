@@ -2,6 +2,7 @@ class_name HitInfo
 extends RefCounted
 
 var attacker: Node #Node2D or Node3D
+var victim: Node #Node2D or Node3D
 var damage: float
 var type: Constants.DamageType
 var alignment: float # -1.0...1.0
