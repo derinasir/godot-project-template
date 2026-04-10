@@ -44,7 +44,7 @@ func _on_area_entered(area: Area3D) -> void:
 	if owner == area.owner:
 		return
 
-	if not area.current_hit_info:
+	if not area.hit_info:
 		print("Hitbox has no injected HitInfo")
 		return
 
@@ -65,12 +65,13 @@ func _on_area_entered(area: Area3D) -> void:
 	var hit_info: HitInfo = area.hit_info.clone()
 
 	var hit_direction = (root.global_position - area.root.global_position).normalized()
-	var attacker_forward = -root.pivot.global_basis.z.normalized()
+	var attacker_forward = -root.global_basis.z.normalized()
 
 	var alignment = attacker_forward.dot(hit_direction)
 
 	hit_info.knockback_dir = hit_direction
 	hit_info.alignment = alignment
+	hit_info.victim = root
 
 	was_hit.emit(id, hit_info)
 	area.struck.emit(area.id, hit_info)

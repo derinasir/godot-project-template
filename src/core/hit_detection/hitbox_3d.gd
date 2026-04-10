@@ -9,7 +9,7 @@ signal struck(id: int, hit_info: HitInfo)
 
 var active: bool = false
 var id: int
-var current_hit_info: HitInfo
+var hit_info: HitInfo
 
 @onready var colshape: CollisionShape3D = $CollisionShape3D
 @onready var indicator: MeshInstance3D = $Indicator
@@ -20,8 +20,8 @@ func _ready() -> void:
 	area_entered.connect(_on_area_entered)
 
 
-func setup(hit_info: HitInfo) -> void:
-	current_hit_info = hit_info
+func setup(p_hit_info: HitInfo) -> void:
+	hit_info = p_hit_info
 
 
 func activate() -> void:
